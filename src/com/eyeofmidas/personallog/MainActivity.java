@@ -12,7 +12,6 @@ import org.xiph.vorbis.recorder.VorbisRecorder;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,7 +26,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	public static final String TAG = "PersonalLog";
@@ -39,7 +37,8 @@ public class MainActivity extends Activity {
 	private VorbisRecorder vorbisRecorder;
 	private Handler recordingHandler;
 	private SimpleDateFormat simpleFileDateFormatter;
-	private SimpleDateFormat simpleDisplayDateFormatter;
+
+	// private SimpleDateFormat simpleDisplayDateFormatter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +69,8 @@ public class MainActivity extends Activity {
 		}
 
 		simpleFileDateFormatter = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-		simpleDisplayDateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+		// simpleDisplayDateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm",
+		// Locale.getDefault());
 
 		logList = (ListView) findViewById(R.id.logList);
 		logList.setAdapter(getUpdatedAdapter());
@@ -119,7 +119,7 @@ public class MainActivity extends Activity {
 			for (int i = 0; i < logFiles.length; i++) {
 				// TODO: instead of using filenames, output database info
 
-				//logData.add(simpleDisplayDateFormatter.format(logFiles[i].lastModified()));
+				// logData.add(simpleDisplayDateFormatter.format(logFiles[i].lastModified()));
 				logData.add(logFiles[i].getName());
 			}
 		} else {
